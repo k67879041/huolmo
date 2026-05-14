@@ -2,7 +2,7 @@
 	<view class="container">
 		<view class="logo-container">
 			<view class="logo" v-for="(pet, index) in pets" :key="pet.id">
-				<image class="logo-ba" :src="pet.url"  mode="aspectFill">{{pet.id}}</image>
+				<image class="logo-ba" :src="pet.url"  mode="widthFix" @click="onPreview(index)">{{pet.id}}</image>
 				<text class="title">demo2测试</text>
 			</view>
 		</view>
@@ -15,6 +15,19 @@ import { ref } from 'vue'
 const pets = ref([]);
 const title = ref('demo2测试');
 let petsCount = 10;
+
+
+
+const onPreview = function(index) {
+	console.log(index)
+	let urls = pets.value.map(item => item.url);
+	uni.previewImage({
+		urls: urls,
+		current: urls[index]
+	})
+}
+
+
 // 测试API接口
 function testApi() {
   uni.request({
@@ -27,7 +40,7 @@ function testApi() {
       console.log(res)
       pets.value = res.data;
     }
-  })
+ 	})
 }
 // 调用API接口获取数据
 testApi();
