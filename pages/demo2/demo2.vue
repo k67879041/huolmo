@@ -6,7 +6,10 @@
 				<text class="title">demo2测试</text>
 			</view>
 		</view>
-		
+		<view class="loading-container">
+			<view class="loading">刷新更多</view>
+			<view class="loading">返回顶部</view>
+		</view>
 	</view>
 </template>
 
@@ -75,6 +78,19 @@ testApi();
 		padding: 20rpx 0;
 		font-size: 36rpx;
 		color: #8f8f94;
+	}
+	.loading-container {
+		// 垂直居中图片和文字
+		padding: 50rpx;
+		.loading {
+			// 下一行居中
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 20rpx 0;
+			font-size: 36rpx;
+			color: #8f8f94;
+		}
 	}
 }
 </style>
